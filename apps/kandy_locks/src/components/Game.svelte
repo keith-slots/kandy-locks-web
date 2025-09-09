@@ -77,7 +77,7 @@
 			{#snippet logo()}
 				<Text
 					anchor={{ x: 1, y: 0 }}
-					text="ADD YOUR LOGO"
+					text="KEITH SLOTS"
 					style={{
 						fontFamily: 'proxima-nova',
 						fontSize: REM * 1.5,
@@ -102,6 +102,6 @@
 
 <Modals>
 	{#snippet version()}
-		<GameVersion version="0.0.0" />
+		<GameVersion version="1.0.0" />
 	{/snippet}
 </Modals>

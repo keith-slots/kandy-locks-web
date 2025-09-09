@@ -2,7 +2,7 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 
 	const { Story } = defineMeta({
-		title: 'MODE_SUPERSPIN/bookEvent',
+		title: 'MODE_BOOST/bookEvent',
 	});
 </script>
 
@@ -17,7 +17,7 @@
 	import Game from '../components/Game.svelte';
 	import { setContext } from '../game/context';
 	import { playBookEvent } from '../game/utils';
-	import events from './data/superspin_events';
+	import events from './data/base_events';
 
 	setContext();
 </script>
@@ -46,6 +46,35 @@
 />
 
 <Story
+	name="setTotalWin"
+	args={templateArgs({
+		skipLoadingScreen: true,
+		data: events.setTotalWin,
+		action: async (data) => await playBookEvent(data, { bookEvents: [] }),
+	})}
+/>
+
+<Story
+	name="finalWin"
+	args={templateArgs({
+		skipLoadingScreen: true,
+		data: events.finalWin,
+		action: async (data) => await playBookEvent(data, { bookEvents: [] }),
+	})}
+	{template}
+/>
+
+<Story
+	name="freeSpinTrigger"
+	args={templateArgs({
+		skipLoadingScreen: true,
+		data: events.freeSpinTrigger,
+		action: async (data) => await playBookEvent(data, { bookEvents: [] }),
+	})}
+	{template}
+/>
+
+<Story
 	name="updateFreeSpin"
 	args={templateArgs({
 		skipLoadingScreen: true,
@@ -56,21 +85,54 @@
 />
 
 <Story
-	name="newStickySymbols"
+	name="newExpandingWilds"
 	args={templateArgs({
 		skipLoadingScreen: true,
-		data: events.newStickySymbols,
+		data: events.newExpandingWilds,
 		action: async (data) => await playBookEvent(data, { bookEvents: [] }),
 	})}
 	{template}
 />
 
 <Story
-	name="prizeWinInfo"
+	name="updateExpandingWilds"
 	args={templateArgs({
 		skipLoadingScreen: true,
-		data: events.prizeWinInfo,
+		data: events.updateExpandingWilds,
+		action: async (data) => {
+			await playBookEvent(
+				{
+					index: 0,
+					type: 'newExpandingWilds',
+					newWilds: data.existingWilds.map((item) => ({ ...item, mult: 2 })),
+				},
+				{ bookEvents: [] },
+			);
+			await playBookEvent(data, { bookEvents: [] });
+		},
+	})}
+	{template}
+/>
+
+<Story
+	name="winInfo"
+	args={templateArgs({
+		skipLoadingScreen: true,
+		data: events.winInfo,
 		action: async (data) => await playBookEvent(data, { bookEvents: [] }),
+	})}
+	{template}
+/>
+
+<Story
+	name="winInfo with expandingWilds"
+	args={templateArgs({
+		skipLoadingScreen: true,
+		data: events.winInfo,
+		action: async (data) => {
+			await playBookEvent(events.newExpandingWilds, { bookEvents: [] });
+			await playBookEvent(data, { bookEvents: [] });
+		},
 	})}
 	{template}
 />
@@ -86,20 +148,20 @@
 />
 
 <Story
-	name="setTotalWin"
+	name="freeSpinEnd"
 	args={templateArgs({
 		skipLoadingScreen: true,
-		data: events.setTotalWin,
+		data: events.freeSpinEnd,
 		action: async (data) => await playBookEvent(data, { bookEvents: [] }),
 	})}
 	{template}
 />
 
 <Story
-	name="finalWin"
+	name="winCap"
 	args={templateArgs({
 		skipLoadingScreen: true,
-		data: events.finalWin,
+		data: events.winCap,
 		action: async (data) => await playBookEvent(data, { bookEvents: [] }),
 	})}
 	{template}

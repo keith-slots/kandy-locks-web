@@ -2,7 +2,7 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 
 	const { Story } = defineMeta({
-		title: 'MODE_SUPERSPIN/book',
+		title: 'MODE_BOOST/book',
 	});
 </script>
 
@@ -18,7 +18,7 @@
 	import Game from '../components/Game.svelte';
 	import { setContext } from '../game/context';
 	import { playBet } from '../game/utils';
-	import books from './data/superspin_books';
+	import books from './data/base_books';
 
 	setContext();
 </script>

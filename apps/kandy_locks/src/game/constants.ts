@@ -30,6 +30,9 @@ export const INITIAL_BOARD: RawSymbol[][] = [
 		{
 			name: 'H3',
 		},
+		{
+			name: 'H3',
+		},
 	],
 	[
 		{
@@ -52,6 +55,9 @@ export const INITIAL_BOARD: RawSymbol[][] = [
 		},
 		{
 			name: 'H4',
+		},
+		{
+			name: 'H3',
 		},
 	],
 	[
@@ -75,6 +81,9 @@ export const INITIAL_BOARD: RawSymbol[][] = [
 		},
 		{
 			name: 'L1',
+		},
+		{
+			name: 'H3',
 		},
 	],
 	[
@@ -99,6 +108,9 @@ export const INITIAL_BOARD: RawSymbol[][] = [
 		{
 			name: 'H4',
 		},
+		{
+			name: 'H3',
+		},
 	],
 	[
 		{
@@ -121,6 +133,9 @@ export const INITIAL_BOARD: RawSymbol[][] = [
 		},
 		{
 			name: 'H1',
+		},
+		{
+			name: 'H3',
 		},
 	],
 ];
