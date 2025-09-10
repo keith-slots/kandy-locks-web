@@ -5,10 +5,10 @@
 	import { EnableHotkey } from 'components-shared';
 	import { MainContainer } from 'components-layout';
 	import { App, Text, REM } from 'pixi-svelte';
-	import { stateModal } from 'state-shared';
+	import { type BetModeMeta, stateModal } from 'state-shared';
 
 	import { UI, UiGameName } from 'components-ui-pixi';
-	import { GameVersion, Modals } from 'components-ui-html';
+	import { GameVersion, Modals } from 'keith-ui-html';
 
 	import { getContext } from '../game/context';
 	import EnableSound from './EnableSound.svelte';
@@ -29,9 +29,16 @@
 	import StickyBoard from './StickyBoard.svelte';
 	import I18nTest from './I18nTest.svelte';
 
+	import { stateMeta } from 'state-shared';
+	import { KANDY_LOCKS_BET_MODE_META } from '../game/meta.ts';
+
 	const context = getContext();
 
-	onMount(() => (context.stateLayout.showLoadingScreen = true));
+	onMount(() => {
+		context.stateLayout.showLoadingScreen = true;
+		// Update the beta meta information from the default.
+		stateMeta.betModeMeta = KANDY_LOCKS_BET_MODE_META as BetModeMeta;
+	});
 
 	context.eventEmitter.subscribeOnMount({
 		buyBonusConfirm: () => {
@@ -72,7 +79,7 @@
 
 		<UI>
 			{#snippet gameName()}
-				<UiGameName name="PRICE GAME" />
+				<UiGameName name="KANDY LOCKS" />
 			{/snippet}
 			{#snippet logo()}
 				<Text

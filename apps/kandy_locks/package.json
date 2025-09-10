@@ -35,6 +35,8 @@
 		"components-storybook": "workspace:*",
 		"components-ui-html": "workspace:*",
 		"components-ui-pixi": "workspace:*",
+		"keith-ui-html": "workspace:*",
+		"keith-ui-pixi": "workspace:*",
 		"constants-shared": "workspace:*",
 		"envs": "workspace:*",
 		"lodash": "4.17.16",
